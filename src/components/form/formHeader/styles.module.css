@@ -1,4 +1,12 @@
 .tabContainer {
-    background: linear-gradient(to right, #6FBEED, #2685C9 );
-    width: fit-content;
+    background: linear-gradient(to right, #2685C9 , #6FBEED);
+    /*width: fit-content;*/
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.listGrid {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    padding: 1em;
 }

@@ -17,9 +17,16 @@ body {
 .ant-tabs-nav-wrap {
   padding: 1em 1em 0em 1em;
 }
+.ant-tabs-nav-list {
+  display: grid!important;
+  grid-template-columns: 1fr 1fr 1fr 1fr!important;
+}
 .ant-tabs-nav-wrap >div {
-  /*padding-top: 0.5em;*/
-  /*padding-bottom: 0.5em;*/
+  flex: 1;
+}
+.ant-tabs-tab {
+  display: flex;
+  justify-content: center;
 }
 
 #mainLayout {

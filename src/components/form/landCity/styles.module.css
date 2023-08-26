@@ -1,0 +1,17 @@
+.lineForm2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.tableSix {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    width: 100%;
+}
+.tableThree {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100%;
+}
+.twoSix{
+    grid-column: span 2;
+}

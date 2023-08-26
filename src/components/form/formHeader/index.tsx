@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { DownloadOutlined } from '@ant-design/icons';
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
-import { Tabs, Button, Radio, Space, Divider } from 'antd';
+import { Tabs, Button,  Space } from 'antd';
 
 import styles from './styles.module.css'
 export default function FormHeader(){
@@ -15,11 +15,16 @@ export default function FormHeader(){
             element2.style.backgroundColor = '';
             element3.style.backgroundColor = '';
             element4.style.backgroundColor = '';
+            element1.style.color = '';
+            element2.style.color = '';
+            element3.style.color = '';
+            element4.style.color = '';
         }
 
         const element : HTMLElement | null = document.querySelector(`[data-node-key="${key}"]`);
         if(element){
             element.style.backgroundColor = 'white'
+            element.style.color = '#2685C9'
         }
 
     };
@@ -31,7 +36,7 @@ export default function FormHeader(){
 
             <Space direction="vertical">
                 <Space wrap>
-                    <h3>Thông tin hồ sơ</h3>
+                    <h4>Thông tin hồ sơ</h4>
                     <span></span>
                     <Button type="dashed" shape="round" icon={<DownloadOutlined />} size={size}>Phí</Button>
                     <Button type="dashed" icon={<DownloadOutlined />} size={size}>Phân giao lại</Button>
@@ -58,6 +63,14 @@ export default function FormHeader(){
                         };
                     })}
                 />
+            </div>
+            <div className={styles.listGrid}>
+                <span>Mã đề nghị</span>
+                <span><b>STB.23.235671</b></span>
+                <span>Số tờ trình</span>
+                <span><b>0000001/23/BĐS-TD</b></span>
+                <span>Thời gian gửi yêu cầu</span>
+                <span><b>15/08/2023 15.30.00</b></span>
             </div>
         </div>
     </>
