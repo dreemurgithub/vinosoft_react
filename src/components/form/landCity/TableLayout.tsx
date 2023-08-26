@@ -1,10 +1,19 @@
 import styles from './styles.module.css'
 import {CityToProvince,ProvinceToTown} from "../../../hook/area";
-import {useState , ChangeEvent} from "react";
+import {useState, ChangeEvent, useEffect} from "react";
 import { Select, Space,Input } from 'antd';
 
 
 export default function TableLayout(){
+
+    const [widthOneSix,setOneSix] = useState(0)
+    function editSize(){
+        const landCity : HTMLElement | null = document.querySelector("#landCity")
+        const width = landCity? landCity.offsetWidth/6 - 20 : 0
+        setOneSix(width)
+    }
+    useEffect(editSize,[])
+    window.addEventListener('resize',editSize)
 
     const citys = Object.keys(CityToProvince)
     const [currentCity,setCity] = useState<string|null>(null)
@@ -19,7 +28,7 @@ export default function TableLayout(){
         else setProvince(null)
     }
     return <>
-        <table style={{width:'100%'}}>
+        <table style={{width:'100%'}} id={"landCity"}>
             <thead style={{width:'100%'}}>
             <tr className={styles.tableSix}>
                 <th scope="col">Địa chỉ tài sản</th>
@@ -33,10 +42,10 @@ export default function TableLayout(){
             <tbody>
             <tr className={styles.tableSix}>
                 <td scope="row">Hồ sơ pháp lý</td>
-                <td>
+                <td >
                     <Space wrap>
                         <Select
-                            style={{ width: 120 }}
+                            style={{ width: widthOneSix }}
                             onChange={changeCity}
                             options = {[{value:'',label:''},...citys.map( (city)=>{
                                 return {value: city, label: city}
@@ -47,7 +56,7 @@ export default function TableLayout(){
 
                 <td><Space wrap>
                     <Select
-                        style={{ width: 120 }}
+                        style={{ width: widthOneSix }}
                         onChange={changeProvince}
                         options = { currentCity? [{value:'',label:''},...CityToProvince[currentCity].map( (province : string)=>{
                             return {value: province, label: province}
@@ -57,7 +66,7 @@ export default function TableLayout(){
                 <td>
                     <Space wrap>
                         <Select
-                            style={{ width: 120 }}
+                            style={{ width: widthOneSix }}
                             options = { currentProvince? [{value:'',label:''},...ProvinceToTown[currentProvince].map( (province : string)=>{
                                 return {value: province, label: province}
                             } )] : [{value:'',label:''}] }
@@ -71,7 +80,7 @@ export default function TableLayout(){
                 <td scope="row">Thực tế</td>
                 <td><Space wrap>
                     <Select
-                        style={{ width: 120 }}
+                        style={{ width: widthOneSix }}
                         onChange={changeCity}
                         options = {[{value:'',label:''},...citys.map( (city)=>{
                             return {value: city, label: city}
@@ -79,7 +88,7 @@ export default function TableLayout(){
                     />
                 </Space></td>
                 <td><Select
-                    style={{ width: 120 }}
+                    style={{ width: widthOneSix }}
                     onChange={changeProvince}
                     options = { currentCity? [{value:'',label:''},...CityToProvince[currentCity].map( (province : string)=>{
                         return {value: province, label: province}
@@ -87,7 +96,7 @@ export default function TableLayout(){
                 /></td>
                 <td><Space wrap>
                     <Select
-                        style={{ width: 120 }}
+                        style={{ width: widthOneSix }}
                         options = { currentProvince? [{value:'',label:''},...ProvinceToTown[currentProvince].map( (province : string)=>{
                             return {value: province, label: province}
                         } )] : [{value:'',label:''}] }
