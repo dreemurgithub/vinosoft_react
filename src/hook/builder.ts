@@ -125,6 +125,7 @@ class LandForm{
         this.doRongDuong2 = num;
     }
     set_khuVuc(text: string){
+        localStorage.setItem('khuVuc',text)
         this.khuVuc = text;
     }
     set_ghiChu(text: string){

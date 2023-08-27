@@ -53,6 +53,17 @@ export default function TableLayout(){
         doRongDuong2: testNumString(localStorage.getItem('doRongDuong2')) ?  getNumAllString(localStorage.getItem('doRongDuong2')): 0,
         khuVuc: localStorage.getItem('khuVuc') ?  localStorage.getItem('khuVuc'): '',
         ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
+        // ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
     })
 
     function changeCity(value : string){
@@ -302,7 +313,11 @@ export default function TableLayout(){
             <tr className={styles.tableSix}>
                 <td>Khu vực</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="Nội thành"
+                    value={`${currentForm.khuVuc}`}
+                    onChange={(value)=> {
+                        setForm({...currentForm,khuVuc: value })
+                        FirstLandForm.set_khuVuc(value)
+                    }}
                     placeholder={'HT nhập và cho sửa'}
                     style={{ width: widthOneSix * 2 + 20 }}
                     options={[
