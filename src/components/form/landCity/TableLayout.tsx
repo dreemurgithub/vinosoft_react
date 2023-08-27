@@ -18,7 +18,7 @@ export default function TableLayout(){
     window.addEventListener('resize',editSize)
 
     const regexNum = /^[0-9]+$/;
-    function testLocal(textString : string | null){
+    function testNumString(textString : string | null){
         if(!textString) return false;
         return regexNum.test(textString)
     }
@@ -43,14 +43,16 @@ export default function TableLayout(){
         thucTeDetail: localStorage.getItem('thucTeDetail') ? localStorage.getItem('thucTeDetail'): '',
         hoSoPhapLyTown: localStorage.getItem('hoSoPhapLyTown') ?  localStorage.getItem('hoSoPhapLyTown'): '',
         thucTeTown: localStorage.getItem('thucTeTown') ?  localStorage.getItem('thucTeTown'): '',
-        duongKhungGia: testLocal(localStorage.getItem('duongKhungGia')) ? getNumAllString(localStorage.getItem('duongKhungGia')): 0,
-        khoangCachDuongChinh: testLocal(localStorage.getItem('khoangCachDuongChinh')) ? getNumAllString(localStorage.getItem('khoangCachDuongChinh')): 0,
+        duongKhungGia: testNumString(localStorage.getItem('duongKhungGia')) ? getNumAllString(localStorage.getItem('duongKhungGia')): 0,
+        khoangCachDuongChinh: testNumString(localStorage.getItem('khoangCachDuongChinh')) ? getNumAllString(localStorage.getItem('khoangCachDuongChinh')): 0,
         loaiDuongTiepGiap: localStorage.getItem('loaiDuongTiepGiap') ?  localStorage.getItem('loaiDuongTiepGiap'): '',
-        khoangCachSTB: testLocal(localStorage.getItem('khoangCachSTB')) ?  getNumAllString(localStorage.getItem('khoangCachSTB')): 0,
+        khoangCachSTB: testNumString(localStorage.getItem('khoangCachSTB')) ?  getNumAllString(localStorage.getItem('khoangCachSTB')): 0,
         viTri: localStorage.getItem('viTri') ?  localStorage.getItem('viTri'): '',
-        doRongDuong1: testLocal(localStorage.getItem('doRongDuong1')) ?  getNumAllString(localStorage.getItem('doRongDuong1')): 0,
-        doRongDuong2: testLocal(localStorage.getItem('doRongDuong2')) ?  getNumAllString(localStorage.getItem('doRongDuong2')): 0,
+        viTriKhungGia: testNumString(localStorage.getItem('viTriKhungGia')) ?  getNumAllString(localStorage.getItem('viTriKhungGia')): 0,
+        doRongDuong1: testNumString(localStorage.getItem('doRongDuong1')) ?  getNumAllString(localStorage.getItem('doRongDuong1')): 0,
+        doRongDuong2: testNumString(localStorage.getItem('doRongDuong2')) ?  getNumAllString(localStorage.getItem('doRongDuong2')): 0,
         khuVuc: localStorage.getItem('khuVuc') ?  localStorage.getItem('khuVuc'): '',
+        ghiChu: localStorage.getItem('ghiChu') ?  localStorage.getItem('ghiChu'): '',
     })
 
     function changeCity(value : string){
@@ -257,9 +259,12 @@ export default function TableLayout(){
             <tr className={styles.tableSix}>
                 <td>Vị trí</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="Mặt tiền"
                     style={{ width: widthOneSix * 2 + 20 }}
-                    placeholder={'HT nhập và cho sửa'}
+                    onChange={(value)=>{
+                        setForm({...currentForm,viTri: value})
+                        FirstLandForm.set_viTri(value)
+                    } }
+                    value={currentForm.viTri}
                     options={[
                         { value: 'Kiệt', label: 'Kiệt' },
                         { value: 'Mặt tiền', label: 'Mặt tiền' },
@@ -274,12 +279,25 @@ export default function TableLayout(){
                            }}
                 />
                 </td>
-                <td><Input placeholder="HT nhập và cho sửa" /></td>
+                <td><Input placeholder="HT nhập và cho sửa"
+                           value={currentForm.doRongDuong2}
+                           onChange={(event)=> {
+                               setForm({...currentForm,doRongDuong2: getNumAllString(event.target.value)})
+                               FirstLandForm.set_doRongDuong2(getNumAllString(event.target.value))
+                           }}
+                /></td>
 
             </tr>
             <tr className={styles.tableSix}>
                 <td>Ghi chú</td>
-                <td style={{ gridColumn:'span 5'}} colSpan={5}><Input placeholder="HT nhập và cho sửa"  /></td>
+                <td style={{ gridColumn:'span 5'}} colSpan={5}>
+                    <Input placeholder="HT nhập và cho sửa"
+                             value={`${currentForm.ghiChu}`}
+                             onChange={(event)=> {
+                                 setForm({...currentForm,ghiChu: event.target.value })
+                                 FirstLandForm.set_ghiChu(event.target.value)
+                                 }}
+                /></td>
             </tr>
             <tr className={styles.tableSix}>
                 <td>Khu vực</td>
@@ -294,7 +312,11 @@ export default function TableLayout(){
                 /></td>
                 <td>Vị trí khung giá</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue={1000}
+                    onChange={(value)=>{
+                        setForm({...currentForm,viTriKhungGia: value})
+                        FirstLandForm.set_viTriKhungGia(value)
+                    } }
+                    value={currentForm.viTriKhungGia}
                     style={{ width: widthOneSix * 2 + 20 }}
                     placeholder={'HT nhập và cho sửa'}
                     options={[

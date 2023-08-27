@@ -18,9 +18,11 @@ class LandForm{
         public loaiDuongTiepGiap?: string,
         public khoangCachSTB?: number,
         public viTri?: string,
+        public viTriKhungGia?: number,
         public doRongDuong1?: number,
         public doRongDuong2?: number,
         public khuVuc?: string,
+        public ghiChu?: string,
         public huongChinh?: string,
         public hinhDang?: string,
         public soMatTien?: number,
@@ -99,7 +101,7 @@ class LandForm{
         this.khoangCachDuongChinh = num;
     }
     set_loaiDuongTiepGiap(text: string){
-        localStorage.setItem('loaiDuongTiepGiap',JSON.stringify(text))
+        localStorage.setItem('loaiDuongTiepGiap',text)
         this.loaiDuongTiepGiap = text;
     }
     set_khoangCachSTB(num: number){
@@ -107,7 +109,12 @@ class LandForm{
         this.khoangCachSTB = num;
     }
     set_viTri(text: string){
+        localStorage.setItem('viTri',text)
         this.viTri = text;
+    }
+    set_viTriKhungGia(num: number){
+        localStorage.setItem('viTriKhungGia',JSON.stringify(num))
+        this.viTriKhungGia = num;
     }
     set_doRongDuong1(num : number){
         localStorage.setItem('doRongDuong1',JSON.stringify(num))
@@ -119,6 +126,10 @@ class LandForm{
     }
     set_khuVuc(text: string){
         this.khuVuc = text;
+    }
+    set_ghiChu(text: string){
+        localStorage.setItem('ghiChu',text)
+        this.ghiChu = text;
     }
     set_huongChinh(text: string){
         this.huongChinh = text;
