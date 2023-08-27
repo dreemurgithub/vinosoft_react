@@ -7,7 +7,7 @@ import './index.css';
 function App() {
   return <>
     <div id={'mainLayout'}>
-    <MenuBar></MenuBar>
+      <MenuBar></MenuBar>
       <div>
         <Header></Header>
         <MainForm></MainForm>

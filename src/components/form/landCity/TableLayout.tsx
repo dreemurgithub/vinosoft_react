@@ -41,7 +41,7 @@ export default function TableLayout(){
             </thead>
             <tbody>
             <tr className={styles.tableSix}>
-                <td scope="row">Hồ sơ pháp lý</td>
+                <td>Hồ sơ pháp lý</td>
                 <td >
                     <Space wrap>
                         <Select
@@ -77,7 +77,7 @@ export default function TableLayout(){
                 <td><Input placeholder="Basic usage" /></td>
             </tr>
             <tr className={styles.tableSix}>
-                <td scope="row">Thực tế</td>
+                <td>Thực tế</td>
                 <td><Space wrap>
                     <Select
                         style={{ width: widthOneSix }}
@@ -106,33 +106,78 @@ export default function TableLayout(){
                 <td><Input placeholder="Basic usage" /></td>
             </tr>
             <tr className={styles.tableSix}>
-                <td scope="row">Đoạn đường trong khung giá</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
-                <td>@mdo</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
+                <td>Đoạn đường trong khung giá</td>
+                <td className={styles.twoSix} colSpan={2}><Select
+                    defaultValue="lucy"
+                    style={{ width: widthOneSix * 2 + 20 }}
+                    options={[
+                        { value: 'jack', label: 'Jack' },
+                        { value: 'lucy', label: 'Lucy' },
+                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'disabled', label: 'Disabled', disabled: true },
+                    ]}
+                /></td>
+                <td>Khoảng cách đến đường chính (m)</td>
+                <td className={styles.twoSix} colSpan={2}><Input placeholder="Basic usage" /></td>
             </tr>
             <tr className={styles.tableSix}>
-                <td scope="row">Loại đường tiếp giáp</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
-                <td>Mark</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
+                <td>Loại đường tiếp giáp</td>
+                <td className={styles.twoSix} colSpan={2}><Select
+                    defaultValue="Mặt tiền"
+                    style={{ width: widthOneSix * 2 + 20 }}
+                    options={[
+                        { value: 'jack', label: 'Jack' },
+                        { value: 'Mặt tiền', label: 'Mặt tiền' },
+                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'disabled', label: 'Disabled', disabled: true },
+                    ]}
+                /></td>
+                <td>Khoảng cách tới STB gần nhất (m)</td>
+                <td className={styles.twoSix} colSpan={2}><Input placeholder="Basic usage" /></td>
 
             </tr>
             <tr className={styles.tableSix}>
-                <td scope="row">Vị trí</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
-                <td>Otto</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
+                <td>Vị trí</td>
+                <td className={styles.twoSix} colSpan={2}><Select
+                    defaultValue="lucy"
+                    style={{ width: widthOneSix * 2 + 20 }}
+                    options={[
+                        { value: 'jack', label: 'Jack' },
+                        { value: 'lucy', label: 'Lucy' },
+                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'disabled', label: 'Disabled', disabled: true },
+                    ]}
+                /></td>
+                <td>Độ rộng đường (m)</td>
+                <td><Input placeholder="Basic usage" /></td>
+                <td><Input placeholder="Basic usage" /></td>
+
             </tr>
             <tr className={styles.tableSix}>
-                <td scope="row">Ghi chú</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
+                <td>Ghi chú</td>
+                <td style={{ gridColumn:'span 5'}} colSpan={5}><Input placeholder="Basic usage"  /></td>
             </tr>
             <tr className={styles.tableSix}>
-                <td scope="row">Khu vực</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
-                <td>@mdo</td>
-                <td className={styles.twoSix} colSpan={2}>Otto sss ss s s ss s s s sdfafs à  à à à asfasfas f</td>
+                <td>Khu vực</td>
+                <td className={styles.twoSix} colSpan={2}><Select
+                    defaultValue="lucy"
+                    style={{ width: widthOneSix * 2 + 20 }}
+                    options={[
+                        { value: 'jack', label: 'Jack' },
+                        { value: 'lucy', label: 'Lucy' },
+                        { value: 'Yiminghe', label: 'yiminghe' },
+                    ]}
+                /></td>
+                <td>Vị trí khung giá</td>
+                <td className={styles.twoSix} colSpan={2}><Select
+                    defaultValue="lucy"
+                    style={{ width: widthOneSix * 2 + 35 }}
+                    options={[
+                        { value: 'jack', label: 'Jack' },
+                        { value: 'lucy', label: 'Lucy' },
+                        { value: 'Yiminghe', label: 'yiminghe' },
+                    ]}
+                /></td>
             </tr>
 
             </tbody>
@@ -149,47 +194,53 @@ export default function TableLayout(){
             <tbody>
             <tr className={styles.tableThree}>
                 <td>Hướng chính</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Hình dạng</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Số mặt tiền/mặt thoáng</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Kích thước mặt tiền(m)</td>
-                <td>Kích thước mặt tiền(m)</td>
-                <td>Kích thước mặt tiền(m)</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Kích thước chiều dài(m)</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Diện tích khuôn viên(m2)</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Diện tích phù hợp quy hoạch(m2)</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Diện tích không phù hợp quy hoạch(m2)</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Diện tích sử dụng riêng(m2)</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
             <tr className={styles.tableThree}>
                 <td>Diện tích sử dụng chung(m2)</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
+                <td><Input placeholder="STB nhập và cho sửa" /></td>
+                <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
 
 

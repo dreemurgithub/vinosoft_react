@@ -24,11 +24,17 @@ body {
 .ant-tabs-nav-wrap >div {
   flex: 1;
 }
+
 .ant-tabs-tab {
   display: flex;
   justify-content: center;
 }
-
+tr,th,td {
+  border: 1px solid whitesmoke;
+}
+th {
+  background-color: #FAFAFA;
+}
 #mainLayout {
   display: grid;
   grid-template-columns: 276px 1fr;

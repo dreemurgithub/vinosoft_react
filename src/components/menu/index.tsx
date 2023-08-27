@@ -130,7 +130,7 @@ const MenuBar: React.FC = () => {
     };
 
     return (
-        <div style={{ width: 256 }}>
+        <div style={{ width: 256,backgroundColor:'#2685C9' }}>
             <div>
                 <div id={'header'} style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr 4em',background:'#2685C9'}}>
                     <div className={styles.headerItem}>
