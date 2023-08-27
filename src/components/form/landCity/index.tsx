@@ -9,14 +9,12 @@ import MyContext from "../../../hook/context";
 export default function LandCity() {
     const [currentForm, setForm] = useContext(MyContext) as any
 
-
-
-    const [showUp, setShow] = useState('none')
-    return <>
+    const [showUp, setShow] = useState(true)
+    if(showUp)return <>
         <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
             <div className={styles.lineForm2}>
                 <span><b>Mã tài sản</b></span>
-                <span style={{color: '#2862AF'}}>Ẩn thông tin</span>
+                <span style={{color: '#2862AF',cursor:'pointer'}} onClick={()=>setShow(!showUp)}>Ẩn thông tin</span>
             </div>
             <p></p>
             <div style={{display: 'flex', gap: '1em'}}>
@@ -27,7 +25,7 @@ export default function LandCity() {
             <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
                 <div className={styles.lineForm2}>
                     <span><b>Đặc điểm thửa đất</b></span>
-                    <span>Ẩn thông tin</span>
+                    <span style={{color: '#2862AF',cursor:'pointer'}} onClick={()=>setShow(!showUp)}>Ẩn thông tin</span>
                 </div>
                 <p></p>
                 <div style={{display: 'flex', gap: '2em'}}>
@@ -76,6 +74,27 @@ export default function LandCity() {
                 <TableLayout></TableLayout>
             </div>
 
+        </div>
+
+    </>
+    else return <>
+        <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
+            <div className={styles.lineForm2}>
+                <span><b>Mã tài sản</b></span>
+                <span style={{color: '#2862AF',cursor:'pointer'}} onClick={()=>setShow(!showUp)}>Ẩn thông tin</span>
+            </div>
+            <p></p>
+            <div style={{display: 'flex', gap: '1em'}}>
+                <span>SBA.1928192</span>
+                <span>SBA.1827191</span>
+                <span>SBA.1827191</span>
+            </div>
+            <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
+                <div className={styles.lineForm2}>
+                    <span><b>Đặc điểm thửa đất</b></span>
+                    <span style={{color: '#2862AF',cursor:'pointer'}} onClick={()=>setShow(!showUp)}>Ẩn thông tin</span>
+                </div>
+            </div>
         </div>
     </>
 }

@@ -1,5 +1,5 @@
 .tabContainer {
-    background: linear-gradient(to right, #2685C9 , #6FBEED);
+    background: linear-gradient(270deg, #2685C9 0%, #2C68B1 100%);
     /*width: fit-content;*/
     display: grid;
     grid-template-columns: 1fr;

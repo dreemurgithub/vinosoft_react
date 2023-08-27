@@ -5,6 +5,9 @@ import FirstLandForm from "../../../hook/builder";
 import MyContext from "../../../hook/context";
 
 export default function LandStreet() {
+    const [showUp, setShow] = useState(true)
+
+
     const [widthOneSix, setOneSix] = useState(0)
     const regexNum = /^[0-9]+$/;
 
@@ -29,15 +32,15 @@ export default function LandStreet() {
 
     useEffect(editSize, [])
     window.addEventListener('resize', editSize)
-    return <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
+    if(showUp)return <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
         <table style={{width: '100%'}}>
             <thead style={{width: '100%'}}>
             <tr className={styles.tableSix}>
-                <th scope="col" colSpan={6}
+                <td scope="col" colSpan={6}
                     style={{gridColumn: 'span 6', display: 'flex', justifyContent: 'space-between'}}>
-                    <span>Đất ở tại đô thị</span>
-                    <span>Ẩn thông tin</span>
-                </th>
+                    <span><b>Đất ở tại đô thị</b> </span>
+                    <span style={{color: '#2862AF',cursor:'pointer'}} onClick={()=>setShow(!showUp)}>Ẩn thông tin</span>
+                </td>
             </tr>
             </thead>
             <tbody>
@@ -174,4 +177,20 @@ export default function LandStreet() {
             </tr>
         </table>
     </div>
+    else return <>
+        <div style={{border: '1px solid whitesmoke', margin: '0.5em'}}>
+            <table style={{width: '100%'}}>
+                <thead style={{width: '100%'}}>
+                <tr className={styles.tableSix}>
+                    <td scope="col" colSpan={6}
+                        style={{gridColumn: 'span 6', display: 'flex', justifyContent: 'space-between'}}>
+                        <span><b>Đất ở tại đô thị</b> </span>
+                        <span style={{color: '#2862AF',cursor:'pointer'}} onClick={()=>setShow(!showUp)}>Ẩn thông tin</span>
+                    </td>
+                </tr>
+                </thead>
+
+            </table>
+        </div>
+    </>
 }
