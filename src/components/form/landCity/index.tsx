@@ -1,17 +1,14 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {Button, Form, Input, Select, Radio} from 'antd';
 import styles from './styles.module.css'
 import TableLayout from "./TableLayout";
 import {PlusCircleOutlined, MinusOutlined} from '@ant-design/icons';
 import FirstLandForm from "../../../hook/builder";
+import MyContext from "../../../hook/context";
 
 export default function LandCity() {
-    const [currentForm, setForm] = useState({
-        soThua: localStorage.getItem('soThua') ? `${localStorage.getItem('soThua')}` : '',
-        soToBanDo: localStorage.getItem('soToBanDo') ? `${localStorage.getItem('soToBanDo')}` : '',
-        hopThua: localStorage.getItem('hopThua') === 'true' || localStorage.getItem('hopThua') === 'false' ?
-            localStorage.getItem('hopThua') === 'true' : null
-    })
+    const [currentForm, setForm] = useContext(MyContext) as any
+
 
 
     const [showUp, setShow] = useState('none')
