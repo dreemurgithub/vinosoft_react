@@ -2,7 +2,9 @@ import styles from './styles.module.css'
 import {CityToProvince,ProvinceToTown} from "../../../hook/area";
 import {useState, ChangeEvent, useEffect} from "react";
 import { Select, Space,Input,InputNumber  } from 'antd';
+import FirstLandForm from "../../../hook/builder";
 
+const citys = Object.keys(CityToProvince)
 
 export default function TableLayout(){
 
@@ -15,17 +17,61 @@ export default function TableLayout(){
     useEffect(editSize,[])
     window.addEventListener('resize',editSize)
 
-    const citys = Object.keys(CityToProvince)
-    const [currentCity,setCity] = useState<string|null>(null)
-    const [currentProvince,setProvince] = useState<string|null>(null)
+    const regexNum = /^[0-9]+$/;
+    function testLocal(textString : string | null){
+        if(!textString) return false;
+        return regexNum.test(textString)
+    }
+    function getNumAllString(textString : string | null){
+        if(!textString) return 0
+        if(regexNum.test(textString) ) {
+            return parseInt(textString)
+        }
+        return 0;
+    }
+    const [currentForm,setForm] = useState({
+        sothua: '',
+        soToBanDo:'',
+        hoSoPhapLyCity:localStorage.getItem('hoSoPhapLyCity'),
+        thucTeCity: localStorage.getItem('thucTeCity'),
+        hoSoPhapLyProvince: localStorage.getItem('hoSoPhapLyProvince'),
+        thucTeProvince: localStorage.getItem('thucTeProvince'),
+
+        hoSoPhapLyStreet: localStorage.getItem('hoSoPhapLyStreet') ?  localStorage.getItem('hoSoPhapLyStreet'): '',
+        thucTeStreet: localStorage.getItem('thucTeStreet') ?  localStorage.getItem('thucTeStreet'): '',
+        hoSoPhapLyDetail: localStorage.getItem('hoSoPhapLyDetail') ?  localStorage.getItem('hoSoPhapLyDetail'): '',
+        thucTeDetail: localStorage.getItem('thucTeDetail') ? localStorage.getItem('thucTeDetail'): '',
+        hoSoPhapLyTown: localStorage.getItem('hoSoPhapLyTown') ?  localStorage.getItem('hoSoPhapLyTown'): '',
+        thucTeTown: localStorage.getItem('thucTeTown') ?  localStorage.getItem('thucTeTown'): '',
+        duongKhungGia: testLocal(localStorage.getItem('duongKhungGia')) ? getNumAllString(localStorage.getItem('duongKhungGia')): 0,
+        khoangCachDuongChinh: testLocal(localStorage.getItem('khoangCachDuongChinh')) ? getNumAllString(localStorage.getItem('khoangCachDuongChinh')): 0,
+        loaiDuongTiepGiap: localStorage.getItem('loaiDuongTiepGiap') ?  localStorage.getItem('loaiDuongTiepGiap'): '',
+        khoangCachSTB: testLocal(localStorage.getItem('khoangCachSTB')) ?  getNumAllString(localStorage.getItem('khoangCachSTB')): 0,
+        viTri: localStorage.getItem('viTri') ?  localStorage.getItem('viTri'): '',
+        doRongDuong1: testLocal(localStorage.getItem('doRongDuong1')) ?  getNumAllString(localStorage.getItem('doRongDuong1')): 0,
+        doRongDuong2: testLocal(localStorage.getItem('doRongDuong2')) ?  getNumAllString(localStorage.getItem('doRongDuong2')): 0,
+        khuVuc: localStorage.getItem('khuVuc') ?  localStorage.getItem('khuVuc'): '',
+    })
 
     function changeCity(value : string){
-        if(value) setCity(value)
-        else setCity(null)
+        if(value) {
+            FirstLandForm.set_hoSoPhapLyCity(value)
+            setForm({...currentForm, hoSoPhapLyCity: value})
+        }
+        else {
+            FirstLandForm.set_hoSoPhapLyCity("")
+            setForm({...currentForm, hoSoPhapLyCity: ""})
+        }
     }
     function changeProvince(value : string){
-        if(value) setProvince(value)
-        else setProvince(null)
+        if(value) {
+            FirstLandForm.set_hoSoPhapLyProvince(value)
+            setForm({...currentForm, hoSoPhapLyProvince:value})
+        }
+        else {
+            FirstLandForm.set_hoSoPhapLyProvince('')
+            setForm({...currentForm, hoSoPhapLyProvince:''})
+        }
     }
     return <>
         <table style={{width:'100%'}} id={"landCity"}>
@@ -47,6 +93,7 @@ export default function TableLayout(){
                         <Select
                             placeholder={'HT nhập và cho sửa'}
                             style={{ width: widthOneSix }}
+                            value={currentForm.hoSoPhapLyCity}
                             onChange={changeCity}
                             options = {[{value:'',label:''},...citys.map( (city)=>{
                                 return {value: city, label: city}
@@ -60,7 +107,8 @@ export default function TableLayout(){
                         placeholder={'HT nhập và cho sửa'}
                         style={{ width: widthOneSix }}
                         onChange={changeProvince}
-                        options = { currentCity? [{value:'',label:''},...CityToProvince[currentCity].map( (province : string)=>{
+                        value={currentForm.hoSoPhapLyProvince}
+                        options = { currentForm.hoSoPhapLyCity ? [{value:'',label:''},...CityToProvince[currentForm.hoSoPhapLyCity].map( (province : string)=>{
                             return {value: province, label: province}
                         } )] : [{value:'',label:''}] }
                     />
@@ -70,14 +118,31 @@ export default function TableLayout(){
                         <Select
                             placeholder={'HT nhập và cho sửa'}
                             style={{ width: widthOneSix }}
-                            options = { currentProvince? [{value:'',label:''},...ProvinceToTown[currentProvince].map( (province : string)=>{
+                            value={FirstLandForm.hoSoPhapLyTown}
+                            onChange={(value)=> {
+                                setForm({...currentForm, hoSoPhapLyTown: value})
+                                FirstLandForm.set_hoSoPhapLyTown(value)
+                            }}
+                            options = { currentForm.hoSoPhapLyProvince? [{value:'',label:''},...ProvinceToTown[currentForm.hoSoPhapLyProvince].map( (province : string)=>{
                                 return {value: province, label: province}
                             } )] : [{value:'',label:''}] }
                         />
                     </Space>
                 </td>
-                <td><Input placeholder="HT nhập và cho sửa" /></td>
-                <td><Input placeholder="HT nhập và cho sửa" /></td>
+                <td><Input placeholder="HT nhập và cho sửa"
+                           value={`${currentForm.hoSoPhapLyStreet}`}
+                           onChange={(event)=>{
+                               setForm({...currentForm,hoSoPhapLyStreet: event.target.value})
+                               FirstLandForm.set_hoSoPhapLyStreet(event.target.value)
+                           }}
+                /></td>
+                <td><Input placeholder="HT nhập và cho sửa"
+                           value={`${currentForm.hoSoPhapLyDetail}`}
+                           onChange={(event)=>{
+                               setForm({...currentForm,hoSoPhapLyDetail: event.target.value})
+                               FirstLandForm.set_hoSoPhapLyDetail(event.target.value)
+                           }}
+                /></td>
             </tr>
             <tr className={styles.tableSix}>
                 <td>Thực tế</td>
@@ -85,7 +150,11 @@ export default function TableLayout(){
                     <Select
                         style={{ width: widthOneSix }}
                         placeholder={'HT nhập và cho sửa'}
-                        onChange={changeCity}
+                        onChange={(value)=>{
+                            setForm({...currentForm,thucTeCity: value})
+                            FirstLandForm.set_thucTeCity(value)
+                        } }
+                        value={currentForm.thucTeCity}
                         options = {[{value:'',label:''},...citys.map( (city)=>{
                             return {value: city, label: city}
                         } )] }
@@ -94,8 +163,12 @@ export default function TableLayout(){
                 <td><Select
                     style={{ width: widthOneSix }}
                     placeholder={'HT nhập và cho sửa'}
-                    onChange={changeProvince}
-                    options = { currentCity? [{value:'',label:''},...CityToProvince[currentCity].map( (province : string)=>{
+                    onChange={(value)=>{
+                        setForm({...currentForm,thucTeProvince: value})
+                        FirstLandForm.set_thucTeProvince(value)
+                    } }
+                    value={currentForm.thucTeProvince}
+                    options = { currentForm.thucTeCity? [{value:'',label:''},...CityToProvince[currentForm.thucTeCity].map( (province : string)=>{
                         return {value: province, label: province}
                     } )] : [{value:'',label:''}] }
                 /></td>
@@ -103,20 +176,42 @@ export default function TableLayout(){
                     <Select
                         style={{ width: widthOneSix }}
                         placeholder={'HT nhập và cho sửa'}
-                        options = { currentProvince? [{value:'',label:''},...ProvinceToTown[currentProvince].map( (province : string)=>{
-                            return {value: province, label: province}
+                        onChange={(value)=>{
+                            setForm({...currentForm,thucTeTown: value})
+                            FirstLandForm.set_thucTeTown(value)
+                        } }
+                        value={currentForm.thucTeTown}
+                        options = { currentForm.thucTeProvince? [{value:'',label:''},...ProvinceToTown[currentForm.thucTeProvince].map( (town : string)=>{
+                            return {value: town, label: town}
                         } )] : [{value:'',label:''}] }
                     />
                 </Space></td>
-                <td><Input placeholder="HT nhập và cho sửa" /></td>
-                <td><Input placeholder="HT nhập và cho sửa" /></td>
+                <td><Input placeholder="HT nhập và cho sửa"
+                           value={`${currentForm.thucTeStreet}`}
+                           onChange={(event)=>{
+                               setForm({...currentForm,thucTeStreet: event.target.value})
+                               FirstLandForm.set_thucTeStreet(event.target.value)
+                           }}
+                /></td>
+                <td><Input placeholder="HT nhập và cho sửa"
+                           value={`${currentForm.thucTeDetail}`}
+                           onChange={(event)=>{
+                               setForm({...currentForm,thucTeDetail: event.target.value})
+                               FirstLandForm.set_thucTeDetail(event.target.value)
+                           }}
+                /></td>
             </tr>
             <tr className={styles.tableSix}>
                 <td>Đoạn đường trong khung giá</td>
-                <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue={1000}
+                <td className={styles.twoSix} colSpan={2}>
+                    <Select
                     style={{ width: widthOneSix * 2 + 20 }}
                     placeholder={'HT nhập và cho sửa'}
+                    value={currentForm.duongKhungGia}
+                    onChange={(value)=> {
+                        setForm({...currentForm, duongKhungGia: value})
+                        FirstLandForm.set_duongKhungGia(value)
+                    }}
                     options={[
                         { value: 100, label: '100 triệu' },
                         { value: 500, label: '500 triệu' },
@@ -124,12 +219,23 @@ export default function TableLayout(){
                     ]}
                 /></td>
                 <td>Khoảng cách đến đường chính (m)</td>
-                <td className={styles.twoSix} colSpan={2}><Input placeholder="HT nhập và cho sửa" name={"khoangCachDuongChinh"} /></td>
+                <td className={styles.twoSix} colSpan={2}>
+                    <Input placeholder="HT nhập và cho sửa"
+                           value={currentForm.khoangCachDuongChinh}
+                           onChange={(event)=>{
+                                setForm({...currentForm,khoangCachDuongChinh: getNumAllString(event.target.value)})
+                                FirstLandForm.set_khoangCachDuongChinh(getNumAllString(event.target.value))
+                            }}
+                /></td>
             </tr>
             <tr className={styles.tableSix}>
                 <td>Loại đường tiếp giáp</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="Đường quốc lộ"
+                    value={currentForm.loaiDuongTiepGiap}
+                    onChange={(value)=> {
+                        FirstLandForm.set_loaiDuongTiepGiap(value)
+                        setForm({...currentForm, loaiDuongTiepGiap: value})
+                    }}
                     style={{ width: widthOneSix * 2 + 20 }}
                     placeholder={'HT nhập và cho sửa'}
                     options={[
@@ -139,8 +245,14 @@ export default function TableLayout(){
                     ]}
                 /></td>
                 <td>Khoảng cách tới STB gần nhất (m)</td>
-                <td className={styles.twoSix} colSpan={2}><Input placeholder="HT nhập và cho sửa" /></td>
-
+                <td className={styles.twoSix} colSpan={2}>
+                    <Input placeholder="HT nhập và cho sửa"
+                           value={currentForm.khoangCachSTB}
+                           onChange={(event)=> {
+                               setForm({...currentForm,khoangCachSTB: getNumAllString(event.target.value)})
+                               FirstLandForm.set_khoangCachSTB(getNumAllString(event.target.value))
+                           }}/>
+                </td>
             </tr>
             <tr className={styles.tableSix}>
                 <td>Vị trí</td>
@@ -154,7 +266,14 @@ export default function TableLayout(){
                     ]}
                 /></td>
                 <td>Độ rộng đường (m)</td>
-                <td><Input placeholder="HT nhập và cho sửa" /></td>
+                <td><Input placeholder="HT nhập và cho sửa"
+                           value={currentForm.doRongDuong1}
+                           onChange={(event)=> {
+                               setForm({...currentForm,doRongDuong1: getNumAllString(event.target.value)})
+                               FirstLandForm.set_doRongDuong1(getNumAllString(event.target.value))
+                           }}
+                />
+                </td>
                 <td><Input placeholder="HT nhập và cho sửa" /></td>
 
             </tr>
