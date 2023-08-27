@@ -1,4 +1,6 @@
 .column {
     display: grid;
     grid-template-columns: 1fr;
+    /*border: 1px solid black;*/
+    background: white;
 }

@@ -12,7 +12,7 @@ export default function AreaInfor(){
     useEffect(editSize,[])
     window.addEventListener('resize',editSize)
     return <>
-        <table style={{width:'100%'}}>
+        <table style={{width:'100%',border:'1px solid whitesmoke',margin:'0.5em'}}>
             <thead style={{width:'100%'}}>
             <tr className={styles.tableSix}>
                 <th scope="col" colSpan={6} style={ {gridColumn:'span 6',textAlign:'left'} }>Thông tin hợp thửa</th>

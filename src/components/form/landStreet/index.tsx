@@ -11,12 +11,12 @@ export default function LandStreet(){
     }
     useEffect(editSize,[])
     window.addEventListener('resize',editSize)
-    return <>
+    return <div style={{border:'1px solid whitesmoke',margin:'0.5em'}}>
         <table style={{width:'100%'}}>
             <thead style={{width:'100%'}}>
             <tr className={styles.tableSix}>
                 <th scope="col" colSpan={6} style={ {gridColumn:'span 6',display:'flex',justifyContent:'space-between'} }>
-                    <span>Đất tại đô thị</span>
+                    <span>Đất ở tại đô thị</span>
                     <span>Ẩn thông tin</span>
                 </th>
             </tr>
@@ -25,13 +25,11 @@ export default function LandStreet(){
             <tr className={styles.tableSix}>
                 <td>Mục đích sử dụng đất</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="lucy"
+                    defaultValue="Đất ở tại đô thị"
                     style={{ width: widthOneSix * 2 + 20 }}
-                    placeholder={'HT nhập và cho sửa'}
                     options={[
-                        { value: 'jack', label: 'Jack' },
-                        { value: 'lucy', label: 'Lucy' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'Đất nông nghiệp', label: 'Đất nông nghiệp' },
+                        { value: 'Đất ở tại đô thị', label: 'Đất ở tại đô thị' },
                     ]}
                 /></td>
                 <td>Nguồn gốc sử dụng đất</td>
@@ -47,7 +45,6 @@ export default function LandStreet(){
                     options={[
                         { value: 'jack', label: 'Jack' },
                         { value: 'Mặt tiền', label: 'Mặt tiền' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
                     ]}
                 /></td>
 
@@ -91,5 +88,5 @@ export default function LandStreet(){
                 <td><Input placeholder="Hệ thống tự nhập và cho sửa" /></td>
             </tr>
         </table>
-    </>
+    </div>
 }

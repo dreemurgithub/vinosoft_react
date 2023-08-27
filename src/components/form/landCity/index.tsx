@@ -10,7 +10,7 @@ export default function LandCity(){
 
     const [showUp,setShow] = useState('none')
     return <>
-        <div style={{border:'1px solid gray'}}>
+        <div style={{border:'1px solid whitesmoke',margin:'0.5em'}}>
             <div className={styles.lineForm2}>
                 <span><b>Mã tài sản</b></span>
                 <span style={{color:'#2862AF'}}>Ẩn thông tin</span>
@@ -21,7 +21,7 @@ export default function LandCity(){
                 <span>SBA.1827191</span>
                 <span>SBA.1827191</span>
             </div>
-            <div style={{border:'1px solid black'}}>
+            <div style={{border:'1px solid whitesmoke',margin:'0.5em'}}>
                 <div className={styles.lineForm2}>
                     <span><b>Đặc điểm thửa đất</b></span>
                     <span>Ẩn thông tin</span>
@@ -40,6 +40,16 @@ export default function LandCity(){
                     <span>Thửa đất 3 <MinusOutlined style={{ backgroundColor:'red',color:'white', borderRadius:'50%'} }/></span>
                     <span>Thửa đất 4 <MinusOutlined style={{ backgroundColor:'red',color:'white', borderRadius:'50%'} }/></span>
                 </div>
+                <table style={{width:'100%'}}>
+                    <tbody>
+                        <tr className={styles.tableSix}>
+                            <td>Số thửa</td>
+                            <td className={styles.twoSix} colSpan={2}><Input placeholder="HT nhập và cho sửa" /></td>
+                            <td>Số tờ bản đồ</td>
+                            <td className={styles.twoSix} colSpan={2}><Input placeholder="HT nhập và cho sửa" /></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <TableLayout></TableLayout>
             </div>
 

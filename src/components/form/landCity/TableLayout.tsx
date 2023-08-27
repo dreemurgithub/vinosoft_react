@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 import {CityToProvince,ProvinceToTown} from "../../../hook/area";
 import {useState, ChangeEvent, useEffect} from "react";
-import { Select, Space,Input } from 'antd';
+import { Select, Space,Input,InputNumber  } from 'antd';
 
 
 export default function TableLayout(){
@@ -114,28 +114,28 @@ export default function TableLayout(){
             <tr className={styles.tableSix}>
                 <td>Đoạn đường trong khung giá</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="lucy"
+                    defaultValue={1000}
                     style={{ width: widthOneSix * 2 + 20 }}
                     placeholder={'HT nhập và cho sửa'}
                     options={[
-                        { value: 'jack', label: 'Jack' },
-                        { value: 'lucy', label: 'Lucy' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 100, label: '100 triệu' },
+                        { value: 500, label: '500 triệu' },
+                        { value: 1000, label: '1 tỉ' },
                     ]}
                 /></td>
                 <td>Khoảng cách đến đường chính (m)</td>
-                <td className={styles.twoSix} colSpan={2}><Input placeholder="HT nhập và cho sửa" /></td>
+                <td className={styles.twoSix} colSpan={2}><Input placeholder="HT nhập và cho sửa" name={"khoangCachDuongChinh"} /></td>
             </tr>
             <tr className={styles.tableSix}>
                 <td>Loại đường tiếp giáp</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="Mặt tiền"
+                    defaultValue="Đường quốc lộ"
                     style={{ width: widthOneSix * 2 + 20 }}
                     placeholder={'HT nhập và cho sửa'}
                     options={[
-                        { value: 'jack', label: 'Jack' },
-                        { value: 'Mặt tiền', label: 'Mặt tiền' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'Đường nội thành', label: 'Đường nội thành' },
+                        { value: 'Đường quốc lộ', label: 'Đường quốc lộ' },
+                        { value: 'Đường kiệt', label: 'Đường kiệt' },
                     ]}
                 /></td>
                 <td>Khoảng cách tới STB gần nhất (m)</td>
@@ -145,13 +145,12 @@ export default function TableLayout(){
             <tr className={styles.tableSix}>
                 <td>Vị trí</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="lucy"
+                    defaultValue="Mặt tiền"
                     style={{ width: widthOneSix * 2 + 20 }}
                     placeholder={'HT nhập và cho sửa'}
                     options={[
-                        { value: 'jack', label: 'Jack' },
-                        { value: 'lucy', label: 'Lucy' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'Kiệt', label: 'Kiệt' },
+                        { value: 'Mặt tiền', label: 'Mặt tiền' },
                     ]}
                 /></td>
                 <td>Độ rộng đường (m)</td>
@@ -166,23 +165,23 @@ export default function TableLayout(){
             <tr className={styles.tableSix}>
                 <td>Khu vực</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="lucy"
+                    defaultValue="Nội thành"
                     placeholder={'HT nhập và cho sửa'}
                     style={{ width: widthOneSix * 2 + 20 }}
                     options={[
-                        { value: 'jack', label: 'Jack' },
-                        { value: 'lucy', label: 'Lucy' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 'Nội thành', label: 'Nội thành' },
+                        { value: 'Thị xã', label: 'Thị xã' },
                     ]}
                 /></td>
                 <td>Vị trí khung giá</td>
                 <td className={styles.twoSix} colSpan={2}><Select
-                    defaultValue="lucy"
-                    style={{ width: widthOneSix * 2 + 35 }}
+                    defaultValue={1000}
+                    style={{ width: widthOneSix * 2 + 20 }}
+                    placeholder={'HT nhập và cho sửa'}
                     options={[
-                        { value: 'jack', label: 'Jack' },
-                        { value: 'lucy', label: 'Lucy' },
-                        { value: 'Yiminghe', label: 'yiminghe' },
+                        { value: 100, label: '100 triệu' },
+                        { value: 500, label: '500 triệu' },
+                        { value: 1000, label: '1 tỉ' },
                     ]}
                 /></td>
             </tr>

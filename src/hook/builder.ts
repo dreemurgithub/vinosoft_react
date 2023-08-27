@@ -12,14 +12,26 @@ class LandForm{
         public hoSoPhapLyDetail?: string,
         public thucTeDetail?: string,
         public thucTeTown?: string,
-        public duongKhungGia?: string,
-        public khoangCachDuongChinh?: string,
+        public duongKhungGia?: number,
+        public khoangCachDuongChinh?: number,
         public loaiDuongTiepGiap?: string,
-        public khoangCachSTB?: string,
+        public khoangCachSTB?: number,
         public viTri?: string,
-        public doRongDuong?: [string,string],
+        public doRongDuong?: [number,number],
         public khuVuc?: string,
+        public huongChinh?: string,
+        public hinhDang?: string,
+        public soMatTien?: number,
+        public kichThuocMatTien?: number,
+        public kichThuocChieuDai?: number,
+        public dienTichKhuonVien?: number,
+        public dienTichPhuHopQuyHoach?: number,
+        public dienTichKhongPhuHopQuyHoach?: number,
+        public dienTichSuDungRieng?: number,
+        public dienTichSuDungChung?: number,
     ) {}
+
+
 
 
 
@@ -61,26 +73,56 @@ class LandForm{
     set_thucTeTown(text: string){
         this.thucTeTown = text;
     }
-    set_duongKhungGia(text: string){
-        this.duongKhungGia = text;
+    set_duongKhungGia(num: number){
+        this.duongKhungGia = num;
     }
-    set_khoangCachDuongChinh(text: string){
-        this.khoangCachDuongChinh = text;
+    set_khoangCachDuongChinh(num: number){
+        this.khoangCachDuongChinh = num;
     }
     set_loaiDuongTiepGiap(text: string){
         this.loaiDuongTiepGiap = text;
     }
-    set_khoangCachSTB(text: string){
-        this.khoangCachSTB = text;
+    set_khoangCachSTB(num: number){
+        this.khoangCachSTB = num;
     }
     set_viTri(text: string){
         this.viTri = text;
     }
-    set_doRongDuong(textArr:[ string, string]){
-        this.doRongDuong = textArr;
+    set_doRongDuong(numArr:[ number, number]){
+        this.doRongDuong = numArr;
     }
     set_khuVuc(text: string){
         this.khuVuc = text;
+    }
+    set_huongChinh(text: string){
+        this.huongChinh = text;
+    }
+    set_hinhDang(text: string){
+        this.hinhDang = text;
+    }
+    set_soMatTien(num: number){
+        this.soMatTien = num;
+    }
+    set_kichThuocMatTien(num: number){
+        this.kichThuocMatTien = num;
+    }
+    set_kichThuocChieuDai(num: number){
+        this.kichThuocChieuDai = num;
+    }
+    set_dienTichKhuonVien(num: number){
+        this.dienTichKhuonVien = num;
+    }
+    set_dienTichPhuHopQuyHoach(num: number){
+        this.dienTichPhuHopQuyHoach = num;
+    }
+    set_dienTichKhongPhuHopQuyHoach(num: number){
+        this.dienTichKhongPhuHopQuyHoach = num;
+    }
+    set_dienTichSuDungRieng(num: number){
+        this.dienTichSuDungRieng = num;
+    }
+    set_dienTichSuDungChung(num: number){
+        this.dienTichSuDungChung = num;
     }
 
 

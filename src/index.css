@@ -5,8 +5,7 @@ body {
     sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border-collapse: collapse;
-
+  background: #F4F4F4;
 }
 .ant-menu, .ant-menu-item,.ant-menu-submenu-title,.ant-menu-inline {
   font-family: Roboto,BlinkMacSystemFont;
@@ -33,6 +32,9 @@ body {
 }
 tr,th,td {
   border: 1px solid whitesmoke;
+}
+table {
+  background: white;
 }
 th {
   background-color: #FAFAFA;
