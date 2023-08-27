@@ -5,6 +5,8 @@ body {
     sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border-collapse: collapse;
+
 }
 .ant-menu, .ant-menu-item,.ant-menu-submenu-title,.ant-menu-inline {
   font-family: Roboto,BlinkMacSystemFont;

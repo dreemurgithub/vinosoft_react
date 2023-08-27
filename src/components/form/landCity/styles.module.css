@@ -1,6 +1,6 @@
 .lineForm2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
 }
 .tableSix {
     display: grid;

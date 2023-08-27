@@ -44,7 +44,7 @@ export default function AreaInfor(){
             </tr>
             <tr className={styles.tableSix}>
                 <td>Ghi chú</td>
-                <td style={{ gridColumn:'span 5'}} colSpan={5}><Input placeholder="Basic usage"  /></td>
+                <td style={{ gridColumn:'span 5'}} colSpan={5}><Input placeholder="Nhập"  /></td>
             </tr>
             </tbody>
         </table>

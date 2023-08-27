@@ -19,22 +19,19 @@ export default function LandStreet(){
                     <span>Đất tại đô thị</span>
                     <span>Ẩn thông tin</span>
                 </th>
-
             </tr>
             </thead>
             <tbody>
-
-            <tr className={styles.tableSix}></tr>
             <tr className={styles.tableSix}>
                 <td>Mục đích sử dụng đất</td>
                 <td className={styles.twoSix} colSpan={2}><Select
                     defaultValue="lucy"
                     style={{ width: widthOneSix * 2 + 20 }}
+                    placeholder={'HT nhập và cho sửa'}
                     options={[
                         { value: 'jack', label: 'Jack' },
                         { value: 'lucy', label: 'Lucy' },
                         { value: 'Yiminghe', label: 'yiminghe' },
-                        { value: 'disabled', label: 'Disabled', disabled: true },
                     ]}
                 /></td>
                 <td>Nguồn gốc sử dụng đất</td>
@@ -45,12 +42,12 @@ export default function LandStreet(){
                 <td>Thời gian sử dụng</td>
                 <td className={styles.twoSix} colSpan={2}><Select
                     defaultValue="Mặt tiền"
+                    placeholder={'HT nhập và cho sửa'}
                     style={{ width: widthOneSix * 2 + 20 }}
                     options={[
                         { value: 'jack', label: 'Jack' },
                         { value: 'Mặt tiền', label: 'Mặt tiền' },
                         { value: 'Yiminghe', label: 'yiminghe' },
-                        { value: 'disabled', label: 'Disabled', disabled: true },
                     ]}
                 /></td>
 
