@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "formatted_address": "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA",
+      "geometry": {
+        "location": {
+          "lat": 37.4224764,
+          "lng": -122.0842499
+        }
+      },
+      "place_id": "ChIJ2eUgeAK6j4ARbn5u_wAGqWA",
+      "types": [
+        "street_address"
+      ]
+    }
+  ],
+  "status": "OK"
+}
